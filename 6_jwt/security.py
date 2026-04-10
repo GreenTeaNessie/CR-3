@@ -9,7 +9,6 @@ from .schemas import UserInDB
 pwd_context = CryptContext(schemes=["bcrypt"], deprecated="auto")
 bearer_scheme = HTTPBearer()
 
-# In-memory user store
 users_db: dict[str, UserInDB] = {}
 
 

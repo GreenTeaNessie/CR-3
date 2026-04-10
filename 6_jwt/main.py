@@ -18,7 +18,6 @@ app.state.limiter = limiter
 app.add_exception_handler(RateLimitExceeded, _rate_limit_exceeded_handler)
 
 
-# --- Task 6.5: register with rate limiting (1/min) ---
 @app.post("/register", status_code=status.HTTP_201_CREATED)
 @limiter.limit("1/minute")
 def register(request: Request, user: UserCreate):
@@ -32,7 +31,6 @@ def register(request: Request, user: UserCreate):
     return {"message": f"User '{user.username}' registered successfully"}
 
 
-# --- Task 6.4 / 6.5: login with rate limiting (5/min) ---
 @app.post("/login", response_model=Token)
 @limiter.limit("5/minute")
 def login(request: Request, credentials: UserLogin):
@@ -46,13 +44,11 @@ def login(request: Request, credentials: UserLogin):
     return Token(access_token=token)
 
 
-# --- Task 6.4: protected resource ---
 @app.get("/protected_resource")
 def protected_resource(user: UserInDB = Depends(get_current_user)):
     return {"message": f"Hello, {user.username}! You have access.", "role": user.role}
 
 
-# --- Task 7.1: RBAC endpoints ---
 @app.get("/admin")
 def admin_only(user: UserInDB = Depends(require_role("admin"))):
     return {"message": f"Welcome, admin {user.username}!"}

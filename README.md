@@ -1,7 +1,4 @@
 # FastAPI — Контрольная работа №3
-
-Четыре независимых приложения, каждое решает свой блок заданий.
-
 ## Установка
 
 ```bash
@@ -16,12 +13,12 @@ cp .env.example .env
 
 ---
 
-## task_6_basic — Задания 6.1 / 6.2 / 6.3
+## Задания 6.1 / 6.2 / 6.3
 
-Basic Auth, хеширование паролей, защита документации.
+Авторизация, хеширование паролей, защита документации.
 
 ```bash
-uvicorn task_6_basic.main:app --reload
+uvicorn 6.main:app --reload
 ```
 
 ### Регистрация пользователя
@@ -32,7 +29,7 @@ curl -X POST http://127.0.0.1:8000/register \
   -d '{"username": "alice", "password": "secret123"}'
 ```
 
-### Вход (Basic Auth)
+### Вход
 
 ```bash
 curl -u alice:secret123 http://127.0.0.1:8000/login
@@ -54,12 +51,12 @@ curl -u admin:change_me http://127.0.0.1:8000/docs
 
 ---
 
-## task_6_jwt — Задания 6.4 / 6.5 / 7.1
+## Задания 6.4 / 6.5 / 7.1
 
-JWT аутентификация, rate limiting, роли.
+JWT аутентификация, rate limit, роли.
 
 ```bash
-uvicorn task_6_jwt.main:app --reload
+uvicorn 6_jwt.main:app --reload
 ```
 
 ### Регистрация (1 запрос в минуту)
@@ -102,12 +99,12 @@ curl http://127.0.0.1:8000/guest -H "Authorization: Bearer <токен>"
 
 ---
 
-## task_8_users_sqlite — Задание 8.1
+## Задание 8.1
 
 Регистрация пользователей в SQLite (без SQLAlchemy).
 
 ```bash
-uvicorn task_8_users_sqlite.main:app --reload
+uvicorn 8_sqlite.main:app --reload
 ```
 
 ### Регистрация
@@ -128,12 +125,12 @@ curl -X POST http://127.0.0.1:8000/register \
 
 ---
 
-## task_8_todo_crud — Задание 8.2
+## 8_crud — Задание 8.2
 
 CRUD для задач (Todo) в SQLite.
 
 ```bash
-uvicorn task_8_todo_crud.main:app --reload
+uvicorn 8_crud.main:app --reload
 ```
 
 ### Создать задачу

@@ -1,3 +1,4 @@
+import sqlite3
 from fastapi import FastAPI, HTTPException, status
 from .schemas import UserCreate
 from .database import get_connection
@@ -5,7 +6,6 @@ from .init_db import init_db
 
 app = FastAPI()
 
-# Create table on startup
 init_db()
 
 

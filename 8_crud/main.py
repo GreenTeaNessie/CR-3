@@ -17,8 +17,6 @@ def _row_to_todo(row) -> TodoOut:
     )
 
 
-# --- Task 8.2: CRUD ---
-
 @app.post("/todos", response_model=TodoOut, status_code=status.HTTP_201_CREATED)
 def create_todo(todo: TodoCreate):
     conn = get_connection()
